@@ -13,7 +13,7 @@ namespace CAM.Service.Data.Repository
         }
         public void Create(Software software)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CAM;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
+            using (SqlConnection connection = new SqlConnection("Data Source=CS-035-LT-WS\\SQLEXPRESS;Initial Catalog=CAM; User ID=sa;Password=c@b0t1234;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
                 SqlCommand cmd = new SqlCommand("insert into Softwares(name,ip) values ('" + software.Name + "','" + software.IP + "')", connection);
                 connection.Open();
@@ -26,9 +26,10 @@ namespace CAM.Service.Data.Repository
         public IEnumerable<Software> Read()
         {
             IEnumerable<Software> queryResult;
-            using (SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CAM;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
+            using (SqlConnection connection = new SqlConnection("Data Source=CS-035-LT-WS\\SQLEXPRESS;Initial Catalog=CAM; User ID=sa;Password=c@b0t1234;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
-                queryResult = connection.Query<Software>("SELECT [Id], [name],[ip] FROM dbo.[Softwares]");
+                connection.Open();
+                queryResult = connection.Query<Software>("SELECT Id, name,ip FROM Softwares");
             }
             return queryResult;
 

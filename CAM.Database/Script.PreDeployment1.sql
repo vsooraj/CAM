@@ -16,6 +16,7 @@ GO
 USE CAM
 GO
 DROP table Softwares
+GO
 Truncate table  Softwares
 GO
 CREATE TABLE Softwares(Id INT primary key identity(1,1), Name VARCHAR(max))

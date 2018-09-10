@@ -225,7 +225,7 @@ namespace CAM.ThinClient
             //{
             //    Console.WriteLine("IP Address {0}: {1} ", i, addr[i].ToString());
             //}
-            return addr[0].ToString();
+            return "MAC:"+ addr[0].ToString()+" |IP:"+addr[1].ToString();
         }
         public static bool IsApplictionInstalled(string p_name)
         {
