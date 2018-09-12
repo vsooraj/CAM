@@ -1,6 +1,7 @@
 ﻿using CAM.Entities;
 using Newtonsoft.Json;
 using System;
+using System.Globalization;
 using System.Management;
 using System.Net;
 using System.Net.Http;
@@ -34,6 +35,7 @@ namespace CAM.ThinClient
         }
         private static void InstalledApps()
         {
+            #region ManagementObject
             //ManagementObject
             //dr["Name"]              = MO["Name"].ToString();
             //dr["AssignmentType"]    = MO["AssignmentType"].ToString();
@@ -64,18 +66,22 @@ namespace CAM.ThinClient
             //dr["WordCount"]         = MO["WordCount"];
             //dr["Version"]           = MO["Version"];
 
+            #endregion
 
             ManagementObjectSearcher mos = new ManagementObjectSearcher("SELECT * FROM Win32_Product");
             int index = 1;
+            var installDate = DateTime.Now;
             var systemInfo = new SystemInfo();
             systemInfo.Host = getSystemInfo().Split("|")[0].ToString();
             systemInfo.IP = getSystemInfo().Split("|")[2].ToString();
            
             foreach (ManagementObject mo in mos.Get())
             {
-                Console.WriteLine(" " + index + " Software  " + mo["Name"]);
+                Console.WriteLine(" " + index + " Software  " + mo["Name"] + " InstallDate  " + mo["InstallDate"] + " Version  " + mo["Version"] + " Vendor  " + mo["Vendor"]);
                 index++;
-                Create(new Software { Id = index, Name = (string)mo["Name"], InstallDate = DateTime.Now.ToShortDateString(), SystemInfo=systemInfo });
+                installDate = DateTime.ParseExact(mo["InstallDate"].ToString(), "yyyyMMdd", CultureInfo.InvariantCulture);
+               
+                Create(new Software { Id = index, Name = (string)mo["Name"], InstallDate = installDate.ToString(), SystemInfo=systemInfo,Version= (string)mo["Version"], Vendor = (string)mo["Vendor"] });
             }
         }
         private static string getSystemInfo()

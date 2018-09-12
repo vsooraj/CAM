@@ -15,7 +15,7 @@ namespace CAM.Service.Data.Repository
         {
             using (SqlConnection connection = new SqlConnection("Data Source=13.76.155.59;Initial Catalog=CAM; User ID=sa;Password=RootUser123456789;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
-                SqlCommand cmd = new SqlCommand("insert into Softwares(Name,IP,Host) values ('" + software.Name + "','" + software.SystemInfo.IP + "','" + software.SystemInfo.Host + "')", connection);
+                SqlCommand cmd = new SqlCommand("insert into Softwares(Name,IP,Host,InstalledDate,Vendor,Version) values ('" + software.Name + "','" + software.SystemInfo.IP + "','"  + software.SystemInfo.Host + "','"+ software.InstallDate + "','" + software.Vendor + "','" + software.Version + "')", connection);
                 connection.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
 
