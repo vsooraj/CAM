@@ -23,7 +23,7 @@ namespace CAM.ThinClient
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:51855");
+                client.BaseAddress = new Uri("https://camservice20180912011628.azurewebsites.net/");
                 MediaTypeWithQualityHeaderValue contentType = new MediaTypeWithQualityHeaderValue("application/json");
                 client.DefaultRequestHeaders.Accept.Add(contentType);
                 HttpResponseMessage response = client.PostAsJsonAsync("/api/Softwares", model).Result;
@@ -34,6 +34,37 @@ namespace CAM.ThinClient
         }
         private static void InstalledApps()
         {
+            //ManagementObject
+            //dr["Name"]              = MO["Name"].ToString();
+            //dr["AssignmentType"]    = MO["AssignmentType"].ToString();
+            //dr["Caption"]           = MO["Caption"];
+            //dr["Description"]       = MO["Description"];
+            //dr["IdentifyingNumber"] = MO["IdentifyingNumber"];
+            //dr["InstallLocation"]   = MO["InstallLocation"];
+            //var newDate = DateTime.ParseExact(MO["InstallDate"].ToString(), "yyyyMMdd", CultureInfo.InvariantCulture);
+            //dr["Instal Date"] = newDate;
+            //dr["InstallState"]      = MO["InstallState"];
+            //dr["HelpLink"]          = MO["HelpLink"];
+            //dr["HelpTelephone"]     = MO["HelpTelephone"];
+            //dr["InstallSource"]     = MO["InstallSource"];
+            //dr["Language"]          = MO["Language"];
+            //dr["LocalPackage"]      = MO["LocalPackage"];
+            //dr["PackageCache"]      = MO["PackageCache"];
+            //dr["PackageCode"]       = MO["PackageCode"];
+            //dr["PackageName"]       = MO["PackageName"];
+            //dr["InstallState"]      = MO["InstallState"];
+            //dr["ProductID"]         = MO["ProductID"];
+            //dr["RegOwner"]          = MO["RegOwner"];
+            //dr["RegCompany"]        = MO["RegCompany"];
+            //dr["SKUNumber"]         = MO["SKUNumber"];
+            //dr["Transforms"]        = MO["Transforms"];
+            //dr["URLInfoAbout"]      = MO["URLInfoAbout"];
+            //dr["URLUpdateInfo"]     = MO["URLUpdateInfo"];
+            //dr["Vendor"]            = MO["Vendor"];
+            //dr["WordCount"]         = MO["WordCount"];
+            //dr["Version"]           = MO["Version"];
+
+
             ManagementObjectSearcher mos = new ManagementObjectSearcher("SELECT * FROM Win32_Product");
             int index = 1;
             var systemInfo = new SystemInfo();

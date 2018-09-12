@@ -25,11 +25,12 @@ GO
 --INSERT INTO Softwares VALUES ( 'Apple');
 --INSERT INTO Softwares VALUES ( 'Samsung');
 --INSERT INTO Softwares VALUES ( 'OnePlus');
---GO
 
-select * from Softwares
 GO
 Alter table softwares add  CreatedDate  datetime default getdate()
 Alter table softwares add  IP  varchar(50) default '0.0.0.0'
 Alter table softwares add  Host  varchar(50) default '0.0.0.0'
+Alter table softwares add  InstalledDate  datetime default getdate()
+GO
+select * from Softwares
 
