@@ -15,9 +15,9 @@ GO
 
 USE CAM
 GO
-DROP table Softwares
-GO
-Truncate table  Softwares
+--DROP table Softwares
+--GO
+--Truncate table  Softwares
 GO
 CREATE TABLE Softwares(Id INT primary key identity(1,1), Name VARCHAR(max))
 GO
@@ -31,4 +31,5 @@ select * from Softwares
 GO
 Alter table softwares add  CreatedDate  datetime default getdate()
 Alter table softwares add  IP  varchar(50) default '0.0.0.0'
+Alter table softwares add  Host  varchar(50) default '0.0.0.0'
 

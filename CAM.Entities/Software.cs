@@ -8,6 +8,7 @@
         public string Publisher { get; set; }
         public string InstallDate { get; set; }
         public string InstallLocation { get; set; }
-        public string IP { get; set; }
+        
+        public SystemInfo SystemInfo { get; set; }
     }
 }
