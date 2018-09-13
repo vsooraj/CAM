@@ -7,11 +7,11 @@ namespace CAM.Service.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly SoftwareRepository _softwareRepository;
+        private readonly ISoftwareRepository _softwareRepository;
 
-        public HomeController()
+        public HomeController(ISoftwareRepository softwareRepository)
         {
-            _softwareRepository = new SoftwareRepository();
+            _softwareRepository = softwareRepository;
         }
         public IActionResult Index()
         {

@@ -9,11 +9,11 @@ namespace CAM.Service.Controllers
     [Route("api/Softwares")]
     public class SoftwaresController : Controller
     {
-        private readonly SoftwareRepository _softwareRepository;
+        private readonly ISoftwareRepository _softwareRepository;
 
-        public SoftwaresController()
+        public SoftwaresController(ISoftwareRepository softwareRepository)
         {
-            _softwareRepository = new SoftwareRepository();
+            _softwareRepository = softwareRepository;
         }
         // GET: api/Softwares
         [HttpGet]
