@@ -36,7 +36,7 @@ namespace CAM.ThinClientfull
             {
                 Console.WriteLine(" " + index + " Software  " + mo["Name"]);
                 index++;
-                Create(new Software { Id = index, Name = (string)mo["Name"], InstallDate = DateTime.Now.ToShortDateString()});
+                Create(new Software { Id = index, Name = (string)mo["Name"], InstalledDate = DateTime.Now.ToShortDateString()});
             }
         }
 

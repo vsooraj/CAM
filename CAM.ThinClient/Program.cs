@@ -91,7 +91,7 @@ namespace CAM.ThinClient
                         var Vendor = mo["Vendor"].ToString() ?? "Vendor not avail";
                         //Console.WriteLine(" " + index + " Software  " + name + " InstallDate  " + installDate + " Version  " + Version + " Vendor  " + Vendor);
                         index++;
-                        Create(new Software { Id = index, Name = name,InstallDate= installDate.ToString(), SystemInfo = systemInfo, Version = Version, Vendor = Vendor }, mySettingsConfig.ApiURL);
+                        Create(new Software { Id = index, Name = name, InstalledDate = installDate.ToString(), SystemInfo = systemInfo, Version = Version, Vendor = Vendor }, mySettingsConfig.ApiURL);
                     }
                 }
             }

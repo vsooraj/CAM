@@ -6,7 +6,7 @@
         public string Name { get; set; }
         public string Size { get; set; }
         public string Publisher { get; set; }
-        public string InstallDate { get; set; }
+        public string InstalledDate { get; set; }
         public string InstallLocation { get; set; }
         public string Version { get; set; }
         public string  CreatedOn { get; set; }
