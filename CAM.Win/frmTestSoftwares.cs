@@ -18,12 +18,10 @@ namespace CAM.Win
         {
             InitializeComponent();
         }
-
         private void BtnRead_Click(object sender, EventArgs e)
         {
             Read();
         }
-
         private void BtnUpload_Click(object sender, EventArgs e)
         {
             SystemInfo systemInfo = new SystemInfo() { Host = GetSystemInfo()[0], IP = GetSystemInfo()[1] };
@@ -98,7 +96,6 @@ namespace CAM.Win
             dt.DefaultView.Sort = "Name Asc";
             dgvSoftwares.DataSource = dt;
         }
-
         private void ReadAndUpload(SystemInfo systemInfo)
         {
 
@@ -128,7 +125,6 @@ namespace CAM.Win
         }
         private Software Create(Software model)
         {
-
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri(ConfigurationManager.AppSettings["Host"]);
@@ -141,7 +137,6 @@ namespace CAM.Win
             }
 
         }
-
         public void UseWMI()
         {
             string query = "SELECT * FROM Win32_NetworkAdapterConfiguration WHERE IPEnabled = 'TRUE'";
@@ -175,7 +170,6 @@ namespace CAM.Win
                 }
             }
         }
-
         private string[] GetSystemInfo()
         {
             var strArray = new string[2];
@@ -187,6 +181,16 @@ namespace CAM.Win
             strArray[0] = addr[2].ToString();
             strArray[1] = addr[1].ToString();
             return strArray;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

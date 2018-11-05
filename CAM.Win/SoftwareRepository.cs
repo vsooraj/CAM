@@ -30,7 +30,6 @@ namespace CAM.Win
             return softwareList;
 
         }
-
         public enum EnvironmentType
         {
             Developement,
@@ -67,7 +66,6 @@ namespace CAM.Win
             }
             return softwareList;
         }
-
         private string[] getSystemInfo()
         {
             var strArray = new string[2];

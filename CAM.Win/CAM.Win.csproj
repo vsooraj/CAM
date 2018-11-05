@@ -80,7 +80,6 @@
     <Compile Include="Data\Repositories\ISoftwareRepository.cs" />
     <Compile Include="Services\EncryptionService.cs" />
     <Compile Include="Services\IEncryptionService.cs" />
-    <Compile Include="SoftwareRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmTestSoftwares.resx">
