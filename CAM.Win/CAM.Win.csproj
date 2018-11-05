@@ -81,12 +81,6 @@
     <Compile Include="Services\EncryptionService.cs" />
     <Compile Include="Services\IEncryptionService.cs" />
     <Compile Include="SoftwareRepository.cs" />
-    <Compile Include="frmSoftwares.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSoftwares.Designer.cs">
-      <DependentUpon>frmSoftwares.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmTestSoftwares.resx">
@@ -101,9 +95,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmSoftwares.resx">
-      <DependentUpon>frmSoftwares.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
