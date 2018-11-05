@@ -19,14 +19,15 @@ namespace CAM.Win
             InitializeComponent();
         }
 
-        private void btnRead_Click(object sender, EventArgs e)
+        private void BtnRead_Click(object sender, EventArgs e)
         {
             Read();
         }
 
-        private void btnUpload_Click(object sender, EventArgs e)
+        private void BtnUpload_Click(object sender, EventArgs e)
         {
-            ReadAndUpload();
+            SystemInfo systemInfo = new SystemInfo() { Host = GetSystemInfo()[0], IP = GetSystemInfo()[1] };
+            ReadAndUpload(systemInfo);
         }
         private void Read()
         {
@@ -98,9 +99,9 @@ namespace CAM.Win
             dgvSoftwares.DataSource = dt;
         }
 
-        private void ReadAndUpload()
+        private void ReadAndUpload(SystemInfo systemInfo)
         {
-            SystemInfo systemInfo = new SystemInfo() { Host = getSystemInfo()[0], IP = getSystemInfo()[1] };
+
             SelectQuery Sq = new SelectQuery("Win32_Product");
             ManagementObjectSearcher objOSDetails = new ManagementObjectSearcher(Sq);
             ManagementObjectCollection osDetailsCollection = objOSDetails.Get();
@@ -120,6 +121,7 @@ namespace CAM.Win
                     Vendor = MO["Version"]?.ToString() ?? "Nill",
                     SystemInfo = systemInfo
                 };
+                Create(software);
 
             }
 
@@ -174,7 +176,7 @@ namespace CAM.Win
             }
         }
 
-        private string[] getSystemInfo()
+        private string[] GetSystemInfo()
         {
             var strArray = new string[2];
 
@@ -182,7 +184,7 @@ namespace CAM.Win
             strHostName = Dns.GetHostName();
             IPHostEntry ipEntry = Dns.GetHostEntry(strHostName);
             IPAddress[] addr = ipEntry.AddressList;
-            strArray[0] = addr[0].ToString();
+            strArray[0] = addr[2].ToString();
             strArray[1] = addr[1].ToString();
             return strArray;
         }

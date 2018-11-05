@@ -1,6 +1,7 @@
 ﻿using CAM.Entities;
 using Dapper;
 using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -24,8 +25,8 @@ namespace CAM.Service.Data.Repository
             var conStr = _configuration.GetConnectionString("DefaultConnection");
             using (SqlConnection connection = new SqlConnection(conStr))
             {
-               
-                SqlCommand cmd = new SqlCommand("insert into Softwares(Name,IP,Host,InstalledDate,Vendor,Version) values ('" + software.Name + "','" + software.SystemInfo.IP + "','"  + software.SystemInfo.Host + "','"+ software.InstalledDate + "','" + software.Vendor + "','" + software.Version + "')", connection);
+
+                SqlCommand cmd = new SqlCommand("insert into Softwares(Name,IP,Host,InstalledDate,Vendor,Version) values ('" + software.Name + "','" + software.SystemInfo.IP + "','" + software.SystemInfo.Host + "','" + DateTime.Now.ToShortDateString() + "','" + software.Vendor + "','" + software.Version + "')", connection);
                 connection.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
 

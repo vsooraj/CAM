@@ -51,7 +51,7 @@
             this.btnUpload.TabIndex = 6;
             this.btnUpload.Text = "Upload";
             this.btnUpload.UseVisualStyleBackColor = true;
-            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            this.btnUpload.Click += new System.EventHandler(this.BtnUpload_Click);
             // 
             // btnRead
             // 
@@ -61,7 +61,7 @@
             this.btnRead.TabIndex = 5;
             this.btnRead.Text = "Read";
             this.btnRead.UseVisualStyleBackColor = true;
-            this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
+            this.btnRead.Click += new System.EventHandler(this.BtnRead_Click);
             // 
             // dgvSoftwares
             // 
