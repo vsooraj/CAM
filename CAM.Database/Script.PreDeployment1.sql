@@ -635,11 +635,4 @@ GO
 --SQL Server Management Studio 2018
 
 select * from [Software]
-INSERT INTO Software
-
-
-	 
-
-
-
 
