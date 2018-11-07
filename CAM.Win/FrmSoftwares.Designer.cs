@@ -108,13 +108,7 @@
             this.GbSystem.TabStop = false;
             this.GbSystem.Text = "System Information";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(50, 67);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(333, 20);
-            this.textBox2.TabIndex = 11;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+          
             // 
             // LblIP
             // 
@@ -125,7 +119,6 @@
             this.LblIP.Size = new System.Drawing.Size(23, 13);
             this.LblIP.TabIndex = 10;
             this.LblIP.Text = "IP:";
-            this.LblIP.Click += new System.EventHandler(this.label2_Click);
             // 
             // textBox1
             // 
@@ -170,15 +163,7 @@
             this.GBSoftwares.TabIndex = 11;
             this.GBSoftwares.TabStop = false;
             this.GBSoftwares.Text = "Softwares";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(50, 67);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(333, 20);
-            this.textBox2.TabIndex = 11;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
+          
             // LblIP
             // 
             this.LblIP.AutoSize = true;
@@ -188,7 +173,6 @@
             this.LblIP.Size = new System.Drawing.Size(23, 13);
             this.LblIP.TabIndex = 10;
             this.LblIP.Text = "IP:";
-            this.LblIP.Click += new System.EventHandler(this.label2_Click);
             // 
             // frmTestSoftwares
             // 
