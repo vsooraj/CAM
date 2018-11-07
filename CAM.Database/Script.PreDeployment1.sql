@@ -34,9 +34,9 @@ InstalledDate  datetime default getdate()
 )
 GO
 
---INSERT INTO Softwares VALUES ( 'Apple');
---INSERT INTO Softwares VALUES ( 'Samsung');
---INSERT INTO Softwares VALUES ( 'OnePlus');
+INSERT INTO Softwares(Name) VALUES ( 'Apple');
+INSERT INTO Softwares(Name)  VALUES ( 'Samsung');
+INSERT INTO Softwares(Name)  VALUES ( 'OnePlus');
 
 GO
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CAM.Service.Data.Repository;
+﻿using CAM.Data.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +19,7 @@ namespace CAM.Service
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddHttpClient();
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddTransient<ISoftwareRepository, SoftwareRepository>();
         }

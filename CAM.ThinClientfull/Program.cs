@@ -1,4 +1,4 @@
-﻿namespace CAM.ThinClientfull
+﻿namespace CAM.ThinClient
 {
     class Program
     {
