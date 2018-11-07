@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CAM.Data.Repository;
+using System;
 using System.Windows.Forms;
 
 namespace CAM.Win
@@ -11,9 +12,10 @@ namespace CAM.Win
         [STAThread]
         static void Main()
         {
+            var dBLogRepository = new DBLogRepository();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTestSoftwares());
+            Application.Run(new FrmSoftwares(dBLogRepository));
         }
     }
 }

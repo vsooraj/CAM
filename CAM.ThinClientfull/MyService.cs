@@ -7,7 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
-namespace CAM.ThinClientfull
+namespace CAM.ThinClient
 {
     public class MyService
     {
@@ -19,12 +19,10 @@ namespace CAM.ThinClientfull
             // WindowsServiceSchedler(_myTimer);
 
         }
-
         private void OnTimerEvent(object state)
         {
             InstalledApps();
         }
-
         public void Stop()
         {
             // write code here that runs when the Windows Service stops.  
@@ -40,7 +38,6 @@ namespace CAM.ThinClientfull
                 Create(new Software { Id = index, Name = (string)mo["Name"], InstalledDate = DateTime.Now.ToShortDateString() });
             }
         }
-
         private Software Create(Software model)
         {
 
@@ -56,7 +53,6 @@ namespace CAM.ThinClientfull
             }
 
         }
-
         private string getSystemInfo()
         {
 
@@ -72,11 +68,11 @@ namespace CAM.ThinClientfull
         }
         private static void WindowsServiceSchedler(System.Timers.Timer _timer)
         {
-            string _runweekly = Convert.ToString(ConfigurationSettings.AppSettings["Weekly"]);
-            string _weeklyeventTriggerTime = Convert.ToString(ConfigurationSettings.AppSettings["WeeklyeventTriggerTime"]);
-            string _dayOfWeek = Convert.ToString(ConfigurationSettings.AppSettings["DayOfWeek"]);
+            string _runweekly = Convert.ToString(ConfigurationManager.AppSettings["Weekly"]);
+            string _weeklyeventTriggerTime = Convert.ToString(ConfigurationManager.AppSettings["WeeklyeventTriggerTime"]);
+            string _dayOfWeek = Convert.ToString(ConfigurationManager.AppSettings["DayOfWeek"]);
             DayOfWeek MyDays = (DayOfWeek)DayOfWeek.Parse(typeof(DayOfWeek), _dayOfWeek);
-            string _DailyEventTriggerTime = Convert.ToString(ConfigurationSettings.AppSettings["DailyEventTriggerTime"]);
+            string _DailyEventTriggerTime = Convert.ToString(ConfigurationManager.AppSettings["DailyEventTriggerTime"]);
             Scheduler sch = new Scheduler("WindowsService");
             if (_runweekly == "true")
             {
@@ -105,8 +101,6 @@ namespace CAM.ThinClientfull
         private string _timeString;
         private DayOfWeek _dayOfWeek;
         private int _dayOfMonth;
-
-
         #endregion
 
         #region Constructors
@@ -121,7 +115,6 @@ namespace CAM.ThinClientfull
 
         }
         #endregion
-
 
         private double GetNextInterval()
         {
@@ -196,7 +189,6 @@ namespace CAM.ThinClientfull
 
             return ts.TotalMilliseconds;
         }
-
         private void SetTimer(System.Timers.Timer _timer)
         {
             double inter = (double)GetNextInterval();
@@ -204,8 +196,6 @@ namespace CAM.ThinClientfull
             _timer.Interval = inter;
             _timer.Start();
         }
-
-
         /// <summary>
         /// Schedules the service to run at a specified time, daily.
         /// </summary>
@@ -218,8 +208,6 @@ namespace CAM.ThinClientfull
 
             SetTimer(_timer);
         }
-
-
         /// <summary>
         /// Schedules the service to run on a specified day of the week, at a specified time
         /// </summary>
@@ -234,8 +222,6 @@ namespace CAM.ThinClientfull
 
             SetTimer(_timer);
         }
-
-
         /// <summary>
         /// Schedules the service to run once a month on a specified day and specified time.
         /// </summary>
@@ -254,7 +240,6 @@ namespace CAM.ThinClientfull
 
             SetTimer(_timer);
         }
-
         public void Schedule4Weekly(string time, System.Timers.Timer _timer)
         {
             this._interval = ScheduleInterval.Every4Week;
@@ -263,8 +248,6 @@ namespace CAM.ThinClientfull
 
             SetTimer(_timer);
         }
-
-
         private void Validate()
         {
             if (this._timeString == null || this._timeString.Trim() == "")
@@ -273,12 +256,6 @@ namespace CAM.ThinClientfull
             }
 
         }
-
-
-
-
-
-
     }
 
     public enum ScheduleInterval
