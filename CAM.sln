@@ -4,10 +4,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAM.ThinClient", "CAM.ThinClient\CAM.ThinClient.csproj", "{983E1BEE-E69F-42F8-8823-31C4D33C65C0}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAM.WebUI", "CAM.WebUI\CAM.WebUI.csproj", "{B9CFAA5C-8D73-48DD-8AA9-FAA9E5B7EE09}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAM.Service", "CAM.Service\CAM.Service.csproj", "{B9CFAA5C-8D73-48DD-8AA9-FAA9E5B7EE09}"
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAM.Entities", "CAM.Entities\CAM.Entities.csproj", "{4D839282-D453-4674-8A50-4C75A75D2191}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAM.Service", "CAM.Service\CAM.Service.csproj", "{80AA37F2-2460-46E9-BD3A-EC8B258CDC5B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAM.Entities", "CAM.Entities\CAM.Entities.csproj", "{4D839282-D453-4674-8A50-4C75A75D2191}"
 EndProject
@@ -35,6 +35,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{983E1BEE-E69F-42F8-8823-31C4D33C65C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{983E1BEE-E69F-42F8-8823-31C4D33C65C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{983E1BEE-E69F-42F8-8823-31C4D33C65C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{983E1BEE-E69F-42F8-8823-31C4D33C65C0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B9CFAA5C-8D73-48DD-8AA9-FAA9E5B7EE09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B9CFAA5C-8D73-48DD-8AA9-FAA9E5B7EE09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9CFAA5C-8D73-48DD-8AA9-FAA9E5B7EE09}.Release|Any CPU.ActiveCfg = Release|Any CPU
