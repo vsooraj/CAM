@@ -17,19 +17,20 @@ namespace CAM.Win.Services
             var ipaddresses = new StringBuilder();
             var defaultgateway = string.Empty;
             var subnet = string.Empty;
+            var ipaddress = string.Empty;
             foreach (ManagementObject mo in moCollection)
             {
-                Console.WriteLine("HostName = " + mo["DNSHostName"]);
-                Console.WriteLine("Description = " + mo["Description"]);
+                //Console.WriteLine("HostName = " + mo["DNSHostName"]);
+                //Console.WriteLine("Description = " + mo["Description"]);
                 host = mo["DNSHostName"]?.ToString() ?? "Host not found";
 
                 string[] addresses = (string[])mo["IPAddress"];
-                foreach (string ipaddress in addresses)
-                {
-                    Console.WriteLine("IPAddress = " + ipaddress);
-                    ipaddresses.Append(ipaddresses.Length != 0 ? (" | " + ipaddress) : ipaddress);
-
-                }
+                ipaddress=addresses[0];
+                //foreach (string ipaddress in addresses)
+                //{
+                //    //Console.WriteLine("IPAddress = " + ipaddress);
+                //    ipaddresses.Append(ipaddresses.Length != 0 ? (" | " + ipaddress) : ipaddress);
+                //}
 
                 #region Subnet & IPGateway
                 //string[] subnets = (string[])mo["IPSubnet"];
@@ -47,7 +48,7 @@ namespace CAM.Win.Services
                 #endregion
             }
 
-            return new SystemInfo() { Host = host, IP = ipaddresses.ToString() };
+            return new SystemInfo() { Host = host, IP = ipaddress.ToString() };
 
         }
 
