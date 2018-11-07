@@ -70,20 +70,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Repositories\SoftwareRepository.cs" />
-    <Compile Include="frmTestSoftwares.cs">
+    <Compile Include="FrmSoftwares.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTestSoftwares.Designer.cs">
-      <DependentUpon>frmTestSoftwares.cs</DependentUpon>
+    <Compile Include="FrmSoftwares.Designer.cs">
+      <DependentUpon>FrmSoftwares.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\Repositories\ISoftwareRepository.cs" />
     <Compile Include="Services\EncryptionService.cs" />
+    <Compile Include="Services\ExceptionService.cs" />
     <Compile Include="Services\IEncryptionService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmTestSoftwares.resx">
-      <DependentUpon>frmTestSoftwares.cs</DependentUpon>
+    <Compile Include="Services\SoftwareService.cs" />
+    <Compile Include="Services\SystemService.cs" />
+    <EmbeddedResource Include="FrmSoftwares.resx">
+      <DependentUpon>FrmSoftwares.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -109,6 +110,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CAM.Data\CAM.Data.csproj">
+      <Project>{b824fd62-721e-44e6-8b7c-888bc10a27f5}</Project>
+      <Name>CAM.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CAM.Entities\CAM.Entities.csproj">
       <Project>{4d839282-d453-4674-8a50-4c75a75d2191}</Project>
       <Name>CAM.Entities</Name>

@@ -1,7 +1,7 @@
 ﻿using CAM.Entities;
 using System.Collections.Generic;
 
-namespace CAM.Service.Data.Repository
+namespace CAM.Data.Repository
 {
     public interface ISoftwareRepository
     {

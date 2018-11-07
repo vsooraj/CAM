@@ -1,33 +1,47 @@
 ﻿using CAM.Entities;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Globalization;
 using System.Management;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Windows.Forms;
 
-namespace CAM.Win
+namespace CAM.Win.Services
 {
-    public partial class frmTestSoftwares : Form
+    public class SoftwareService
     {
-        public frmTestSoftwares()
+        public List<Software> Read()
         {
-            InitializeComponent();
+            var softwareList = new List<Software>();
+            var systemInfo = new SystemInfo();
+
+            var systemService = new SystemService();
+            systemInfo = systemService.Retrieve();
+            SelectQuery Sq = new SelectQuery("Win32_Product");
+            ManagementObjectSearcher objOSDetails = new ManagementObjectSearcher(Sq);
+            ManagementObjectCollection osDetailsCollection = objOSDetails.Get();
+            foreach (ManagementObject MO in osDetailsCollection)
+            {
+                var software = new Software
+                {
+                    Id = 0,
+                    Name = MO["Name"]?.ToString() ?? "Nill",
+                    Size = "0.00",
+                    Publisher = MO["RegOwner"]?.ToString() ?? "Nill",
+                    InstalledDate = DateTime.ParseExact(MO["InstallDate"]?.ToString() ?? DateTime.MinValue.ToString("yyyyMMdd"), "yyyyMMdd", CultureInfo.InvariantCulture).ToString(),
+                    InstallLocation = MO["InstallLocation"]?.ToString() ?? "Nill",
+                    Version = MO["Version"]?.ToString() ?? "Nill",
+                    CreatedOn = DateTime.ParseExact(DateTime.MinValue.ToString("yyyyMMdd"), "yyyyMMdd", CultureInfo.InvariantCulture).ToString(),
+                    Vendor = MO["Version"]?.ToString() ?? "Nill",
+                    SystemInfo = systemInfo
+                };
+            }
+            return softwareList;
         }
-        private void BtnRead_Click(object sender, EventArgs e)
-        {
-            Read();
-        }
-        private void BtnUpload_Click(object sender, EventArgs e)
-        {
-            SystemInfo systemInfo = new SystemInfo() { Host = GetSystemInfo()[0], IP = GetSystemInfo()[1] };
-            ReadAndUpload(systemInfo);
-        }
-        private void Read()
+        public DataTable ReadAll()
         {
             DataTable dt = new DataTable();
             dt.Columns.Add(new DataColumn("Name", typeof(string)));
@@ -94,36 +108,9 @@ namespace CAM.Win
                 dt.Rows.Add(dr);
             }
             dt.DefaultView.Sort = "Name Asc";
-            dgvSoftwares.DataSource = dt;
+            return dt;
         }
-        private void ReadAndUpload(SystemInfo systemInfo)
-        {
-
-            SelectQuery Sq = new SelectQuery("Win32_Product");
-            ManagementObjectSearcher objOSDetails = new ManagementObjectSearcher(Sq);
-            ManagementObjectCollection osDetailsCollection = objOSDetails.Get();
-            foreach (ManagementObject MO in osDetailsCollection)
-            {
-
-                var software = new Software
-                {
-                    Id = 0,
-                    Name = MO["Name"]?.ToString() ?? "Nill",
-                    Size = "0.00",
-                    Publisher = MO["RegOwner"]?.ToString() ?? "Nill",
-                    InstalledDate = DateTime.ParseExact(MO["InstallDate"]?.ToString() ?? DateTime.MinValue.ToString("yyyyMMdd"), "yyyyMMdd", CultureInfo.InvariantCulture).ToString(),
-                    InstallLocation = MO["InstallLocation"]?.ToString() ?? "Nill",
-                    Version = MO["Version"]?.ToString() ?? "Nill",
-                    CreatedOn = DateTime.ParseExact(DateTime.MinValue.ToString("yyyyMMdd"), "yyyyMMdd", CultureInfo.InvariantCulture).ToString(),
-                    Vendor = MO["Version"]?.ToString() ?? "Nill",
-                    SystemInfo = systemInfo
-                };
-                Create(software);
-
-            }
-
-        }
-        private Software Create(Software model)
+        public Software Create(Software model)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -135,61 +122,6 @@ namespace CAM.Win
                 Software data = JsonConvert.DeserializeObject<Software>(stringData);
                 return data;
             }
-
-        }
-        public void UseWMI()
-        {
-            string query = "SELECT * FROM Win32_NetworkAdapterConfiguration WHERE IPEnabled = 'TRUE'";
-
-            ManagementObjectSearcher moSearch = new ManagementObjectSearcher(query);
-            ManagementObjectCollection moCollection = moSearch.Get();
-
-            foreach (ManagementObject mo in moCollection)
-            {
-                //Console.WriteLine("HostName = " + mo["DNSHostName"]);
-                //Console.WriteLine("Description = " + mo["Description"]);
-
-
-                string[] addresses = (string[])mo["IPAddress"];
-                foreach (string ipaddress in addresses)
-                {
-                    Console.WriteLine("IPAddress = " + ipaddress);
-                }
-
-                string[] subnets = (string[])mo["IPSubnet"];
-                foreach (string ipsubnet in subnets)
-                {
-                    Console.WriteLine("IPSubnet = " + ipsubnet);
-                }
-
-
-                string[] defaultgateways = (string[])mo["DefaultIPGateway"];
-                foreach (string defaultipgateway in defaultgateways)
-                {
-                    Console.WriteLine("DefaultIPGateway = " + defaultipgateway);
-                }
-            }
-        }
-        private string[] GetSystemInfo()
-        {
-            var strArray = new string[2];
-
-            String strHostName = string.Empty;
-            strHostName = Dns.GetHostName();
-            IPHostEntry ipEntry = Dns.GetHostEntry(strHostName);
-            IPAddress[] addr = ipEntry.AddressList;
-            strArray[0] = addr[2].ToString();
-            strArray[1] = addr[1].ToString();
-            return strArray;
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
 
         }
     }

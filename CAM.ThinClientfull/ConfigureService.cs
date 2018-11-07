@@ -1,6 +1,6 @@
 ﻿using Topshelf;
 
-namespace CAM.ThinClientfull
+namespace CAM.ThinClient
 {
     internal static class ConfigureService
     {

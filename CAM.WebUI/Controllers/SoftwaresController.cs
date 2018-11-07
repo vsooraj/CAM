@@ -1,5 +1,5 @@
-﻿using CAM.Entities;
-using CAM.Service.Data.Repository;
+﻿using CAM.Data.Repository;
+using CAM.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
