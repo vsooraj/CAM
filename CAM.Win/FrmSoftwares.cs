@@ -42,7 +42,7 @@ namespace CAM.Win
                 var dt = new DataTable();
                 var softwareService = new SoftwareService();
                 dt = softwareService.ReadAll();
-                dgvSoftwares.DataSource = dt;
+                DGViewSoftware.DataSource = dt;
             }
             catch (Exception ex)
             {

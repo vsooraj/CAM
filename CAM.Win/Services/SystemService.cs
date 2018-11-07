@@ -31,18 +31,20 @@ namespace CAM.Win.Services
 
                 }
 
-                string[] subnets = (string[])mo["IPSubnet"];
-                foreach (string ipsubnet in subnets)
-                {
-                    Console.WriteLine("IPSubnet = " + ipsubnet);
-                }
+                #region Subnet & IPGateway
+                //string[] subnets = (string[])mo["IPSubnet"];
+                //foreach (string ipsubnet in subnets)
+                //{
+                //    Console.WriteLine("IPSubnet = " + ipsubnet);
+                //}
 
 
-                string[] defaultgateways = (string[])mo["DefaultIPGateway"];
-                foreach (string defaultipgateway in defaultgateways)
-                {
-                    Console.WriteLine("DefaultIPGateway = " + defaultipgateway);
-                }
+                //string[] defaultgateways = (string[])mo["DefaultIPGateway"];
+                //foreach (string defaultipgateway in defaultgateways)
+                //{
+                //    Console.WriteLine("DefaultIPGateway = " + defaultipgateway);
+                //} 
+                #endregion
             }
 
             return new SystemInfo() { Host = host, IP = ipaddresses.ToString() };

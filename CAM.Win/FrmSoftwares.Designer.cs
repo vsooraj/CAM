@@ -31,7 +31,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnUpload = new System.Windows.Forms.Button();
             this.btnRead = new System.Windows.Forms.Button();
-            this.dgvSoftwares = new System.Windows.Forms.DataGridView();
             this.LblHost = new System.Windows.Forms.Label();
             this.GbSystem = new System.Windows.Forms.GroupBox();
             this.TxtIP = new System.Windows.Forms.TextBox();
@@ -39,9 +38,10 @@
             this.TxtHost = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.GBSoftwares = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSoftwares)).BeginInit();
+            this.DGViewSoftware = new System.Windows.Forms.DataGridView();
             this.GbSystem.SuspendLayout();
             this.GBSoftwares.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGViewSoftware)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -75,16 +75,6 @@
             this.btnRead.UseVisualStyleBackColor = true;
             this.btnRead.Click += new System.EventHandler(this.BtnRead_Click);
             // 
-            // dgvSoftwares
-            // 
-            this.dgvSoftwares.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSoftwares.Location = new System.Drawing.Point(36, 190);
-            this.dgvSoftwares.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvSoftwares.Name = "dgvSoftwares";
-            this.dgvSoftwares.RowTemplate.Height = 28;
-            this.dgvSoftwares.Size = new System.Drawing.Size(1064, 630);
-            this.dgvSoftwares.TabIndex = 4;
-            // 
             // LblHost
             // 
             this.LblHost.AutoSize = true;
@@ -108,19 +98,7 @@
             this.GbSystem.TabStop = false;
             this.GbSystem.Text = "System Information";
             // 
-          
-            // 
-            // LblIP
-            // 
-            this.LblIP.AutoSize = true;
-            this.LblIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblIP.Location = new System.Drawing.Point(6, 67);
-            this.LblIP.Name = "LblIP";
-            this.LblIP.Size = new System.Drawing.Size(23, 13);
-            this.LblIP.TabIndex = 10;
-            this.LblIP.Text = "IP:";
-            // 
-            // textBox1
+            // TxtIP
             // 
             this.TxtIP.Location = new System.Drawing.Point(50, 67);
             this.TxtIP.Name = "TxtIP";
@@ -156,6 +134,7 @@
             // 
             // GBSoftwares
             // 
+            this.GBSoftwares.Controls.Add(this.DGViewSoftware);
             this.GBSoftwares.Controls.Add(this.btnUpload);
             this.GBSoftwares.Location = new System.Drawing.Point(13, 145);
             this.GBSoftwares.Name = "GBSoftwares";
@@ -163,18 +142,16 @@
             this.GBSoftwares.TabIndex = 11;
             this.GBSoftwares.TabStop = false;
             this.GBSoftwares.Text = "Softwares";
-          
-            // LblIP
             // 
-            this.LblIP.AutoSize = true;
-            this.LblIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblIP.Location = new System.Drawing.Point(6, 67);
-            this.LblIP.Name = "LblIP";
-            this.LblIP.Size = new System.Drawing.Size(23, 13);
-            this.LblIP.TabIndex = 10;
-            this.LblIP.Text = "IP:";
+            // DGViewSoftware
             // 
-            // frmTestSoftwares
+            this.DGViewSoftware.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGViewSoftware.Location = new System.Drawing.Point(32, 80);
+            this.DGViewSoftware.Name = "DGViewSoftware";
+            this.DGViewSoftware.Size = new System.Drawing.Size(1036, 550);
+            this.DGViewSoftware.TabIndex = 7;
+            // 
+            // FrmSoftwares
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -188,10 +165,10 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmSoftwares";
             this.Text = "Intelligent";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSoftwares)).EndInit();
             this.GbSystem.ResumeLayout(false);
             this.GbSystem.PerformLayout();
             this.GBSoftwares.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DGViewSoftware)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,7 +179,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btnUpload;
         private System.Windows.Forms.Button btnRead;
-        private System.Windows.Forms.DataGridView dgvSoftwares;
         private System.Windows.Forms.Label LblHost;
         private System.Windows.Forms.GroupBox GbSystem;
         private System.Windows.Forms.TextBox TxtHost;
@@ -210,7 +186,6 @@
         private System.Windows.Forms.GroupBox GBSoftwares;
         private System.Windows.Forms.TextBox TxtIP;
         private System.Windows.Forms.Label LblIP;
-        private System.Windows.Forms.ProgressBar progressBar2;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.DataGridView DGViewSoftware;
     }
 }
