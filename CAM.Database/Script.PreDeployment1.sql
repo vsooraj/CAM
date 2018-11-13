@@ -49,3 +49,42 @@ select * from Softwares
 
 SELECT Id, Name,IP,Host,FORMAT ( InstalledDate, 'd', 'en-gb' ) as InstalledDate,Vendor,Version FROM Softwares
 
+CREATE TABLE Asset(
+
+	Id INT PRIMARY KEY IDENTITY(1,1),
+	Host NVARCHAR(100),
+	OS nvarchar(250),
+	Type varchar(50)--Server,Desktop,Device,Laptop
+	)
+
+
+	Create procedure CreateNewAsset
+SET NOCOUNT ON;    
+  
+DECLARE @host varchar(200)    
+  
+PRINT '-------- EMPLOYEE DETAILS --------';    
+  
+DECLARE asset_cursor CURSOR FOR     
+  select distinct Host  from Softwares ----   
+  
+OPEN asset_cursor    
+  
+FETCH NEXT FROM asset_cursor     
+INTO @host   
+  
+print 'Employee_ID  Employee_Name'       
+  
+WHILE @@FETCH_STATUS = 0    
+BEGIN    
+    print '   ' + CAST(@emp_id as varchar(10)) +'           '+          cast(@emp_name as varchar(20))  
+  
+  if not exists (SELECT * FROM from Asset where host =@host)
+      insert into Asset() values(); 
+    FETCH NEXT FROM asset_cursor     
+INTO @host 
+   
+END     
+CLOSE asset_cursor;    
+DEALLOCATE asset_cursor;   
+
