@@ -33,8 +33,9 @@ namespace CAM.Webservice.Controllers
 
         // POST: api/Softwares
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody]Software model)
         {
+            _softwareService.Create(model);
         }
 
         // PUT: api/Softwares/5

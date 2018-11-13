@@ -12,6 +12,11 @@ namespace CAM.Webservice.Services
             _softwareRepository = softwareRepository;
         }
 
+        public void Create(Software model)
+        {
+            _softwareRepository.Create(model);
+        }
+
         public IEnumerable<Software> Read()
         {
             var softwares = _softwareRepository.Read();

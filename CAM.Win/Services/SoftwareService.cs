@@ -38,6 +38,7 @@ namespace CAM.Win.Services
                     Vendor = MO["Version"]?.ToString() ?? "Nill",
                     SystemInfo = systemInfo
                 };
+                softwareList.Add(software);
             }
             return softwareList;
         }
@@ -112,9 +113,11 @@ namespace CAM.Win.Services
         }
         public Software Create(Software model)
         {
+           
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["Host"]);
+                client.BaseAddress = new Uri("https://localhost:44396");
+               // client.BaseAddress = new Uri(ConfigurationManager.AppSettings["Host"].ToString());
                 MediaTypeWithQualityHeaderValue contentType = new MediaTypeWithQualityHeaderValue("application/json");
                 client.DefaultRequestHeaders.Accept.Add(contentType);
                 HttpResponseMessage response = client.PostAsJsonAsync("/api/Softwares", model).Result;

@@ -5,5 +5,6 @@ namespace CAM.Webservice.Services
     public interface ISoftwareService
     {
         IEnumerable<Software> Read();
+        void Create(Software model);
     }
 }

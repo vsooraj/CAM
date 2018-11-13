@@ -36,11 +36,17 @@ namespace CAM.Data.Repository
             using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
                 connection.Open();
-                queryResult = connection.Query<Software>("SELECT Id, Name,IP,Host,FORMAT ( InstalledDate, 'd', 'en-gb' ) as InstalledDate,Vendor,Version FROM Softwares");
+                var query = @"SELECT Id, Name,FORMAT ( InstalledDate, 'd', 'en-gb' ) as InstalledDate,Vendor,Version,IP,Host FROM Softwares";
+                queryResult = connection.Query<Software, SystemInfo, Software>(query, MapResults,splitOn: "IP");             
                 connection.Close();
             }
             return queryResult.ToList();
 
+        }
+        private Software MapResults(Software software, SystemInfo systemInfo)
+        {
+            software.SystemInfo = systemInfo;
+            return software;
         }
     }
 }
